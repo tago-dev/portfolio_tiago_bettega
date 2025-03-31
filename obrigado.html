@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagem Enviada | Tiago Bettega</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .thank-you-container {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .thank-you-icon {
+            font-size: 5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-30px);}
+            60% {transform: translateY(-15px);}
+        }
+        
+        .thank-you-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .thank-you-message {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        
+        .back-button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--accent-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-you-container">
+        <i class="fas fa-check-circle thank-you-icon"></i>
+        <h1 class="thank-you-title">Mensagem Enviada!</h1>
+        <p class="thank-you-message">
+            Obrigado por entrar em contato. Sua mensagem foi recebida com sucesso!
+            Retornarei o contato o mais breve possível.
+        </p>
+        <a href="index.html" class="back-button">Voltar ao Portfólio</a>
+    </div>
+    
+    <script>
+        // Adicionar efeito de confete ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            // Criar confete simples
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.width = `${Math.random() * 10 + 5}px`;
+                confetti.style.height = `${Math.random() * 10 + 5}px`;
+                confetti.style.backgroundColor = ['#64ffda', '#ff7597', '#3498db', '#e74c3c', '#f1c40f'][Math.floor(Math.random() * 5)];
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.top = `-20px`;
+                confetti.style.opacity = Math.random() + 0.5;
+                confetti.style.zIndex = '1000';
+                
+                // Animação
+                confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                
+                document.body.appendChild(confetti);
+                
+                // Remover após a animação
+                setTimeout(() => {
+                    confetti.remove();
+                }, (Math.random() * 3 + 2) * 1000);
+            }
+        });
+        
+        // Adicionar keyframe para animação de queda
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(${Math.random() * 360}deg);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html> 
