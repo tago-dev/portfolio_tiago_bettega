@@ -240,20 +240,6 @@
                         <a href="https://github.com/tago-dev" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
-                <form id="contactForm" class="contact-form">
-                    <h3>Envie uma Mensagem</h3>
-                    <input type="text" name="name" id="name" placeholder="Nome" required>
-                    <input type="email" name="email" id="email" placeholder="Email" required>
-                    <input type="text" name="subject" id="subject" placeholder="Assunto" required>
-                    <textarea name="message" id="message" placeholder="Sua mensagem..." required></textarea>
-                    
-                    <!-- Campos ocultos para o Supabase -->
-                    <input type="hidden" name="source" id="source" value="portfolio_website">
-                    <input type="hidden" name="user_agent" id="user_agent">
-                    
-                    <button type="submit">Enviar Mensagem</button>
-                    <div id="formStatus" class="form-status"></div>
-                </form>
             </div>
         </section>
     </main>
@@ -298,9 +284,6 @@
         </div>
     </footer>
 
-    <!-- Supabase JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="./js/supabase-config.js"></script>
     <script src="./js/script.js"></script>
 </body>
 </html>

@@ -19,7 +19,7 @@
     --transition: all 0.3s ease;
 }
 
-.dark-mode {
+html.dark-mode {
     --primary-color: #a29bfe;
     --secondary-color: #6c5ce7;
     --accent-color: #8c7ae6;
@@ -38,6 +38,11 @@ body {
     overflow-x: hidden;
 }
 
+html.dark-mode body {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
 /* Header styles */
 header {
     background-color: var(--white);
@@ -47,6 +52,11 @@ header {
     top: 0;
     z-index: 1000;
     transition: var(--transition);
+}
+
+html.dark-mode header {
+    background-color: var(--dark-bg);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.3);
 }
 
 nav {
@@ -65,6 +75,10 @@ nav h1 {
     overflow: hidden;
 }
 
+html.dark-mode nav h1 {
+    color: var(--dark-text);
+}
+
 nav h1::after {
     content: '';
     position: absolute;
@@ -72,7 +86,7 @@ nav h1::after {
     left: 0;
     width: 100%;
     height: 2px;
-    background: var(--secondary-color);
+    background: #6c5ce7;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
 }
@@ -95,6 +109,14 @@ nav a {
     position: relative;
 }
 
+html.dark-mode nav a {
+    color: var(--dark-text);
+}
+
+html.dark-mode nav a:hover {
+    color: var(--accent-color);
+}
+
 nav a::before {
     content: '';
     position: absolute;
@@ -102,7 +124,7 @@ nav a::before {
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: var(--secondary-color);
+    background-color: #6c5ce7;
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.3s ease;
@@ -237,6 +259,10 @@ section h2::after {
     border-radius: 20px;
     margin-top: 30px;
     padding-top: 3rem;
+}
+
+html.dark-mode #sobre {
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.15) 0%, rgba(108, 92, 231, 0.1) 100%);
 }
 
 .sobre-content {
@@ -404,6 +430,11 @@ section h2::after {
     overflow: hidden;
 }
 
+html.dark-mode .skill-category {
+    background-color: var(--dark-card);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
 .skill-category::before {
     content: '';
     position: absolute;
@@ -494,6 +525,11 @@ section h2::after {
     border-left: 3px solid var(--secondary-color);
 }
 
+html.dark-mode .job {
+    background-color: var(--dark-card);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
 .job:hover {
     transform: translateY(-5px) translateX(3px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
@@ -503,6 +539,10 @@ section h2::after {
     color: var(--primary-color);
     margin-bottom: 0.8rem;
     font-size: 1.3rem;
+}
+
+html.dark-mode .job h3 {
+    color: var(--dark-text);
 }
 
 .company {
@@ -562,6 +602,11 @@ section h2::after {
     border-top: 3px solid var(--secondary-color);
 }
 
+html.dark-mode .education {
+    background-color: var(--dark-card);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
 .education:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
@@ -571,6 +616,10 @@ section h2::after {
     color: var(--primary-color);
     margin-bottom: 0.8rem;
     font-size: 1.4rem;
+}
+
+html.dark-mode .education h3 {
+    color: var(--dark-text);
 }
 
 .institution {
@@ -595,6 +644,11 @@ section h2::after {
     position: relative;
     overflow: hidden;
     border-radius: 15px 15px 15px 0;
+}
+
+html.dark-mode .cert {
+    background-color: var(--dark-card);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .cert::after {
@@ -626,169 +680,82 @@ section h2::after {
     line-height: 1.4;
 }
 
+html.dark-mode .cert h3 {
+    color: var(--dark-text);
+}
+
 .cert p {
     margin-bottom: 0.5rem;
 }
 
 /* Contact section */
 .contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-    max-width: 900px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
 }
 
 .contact-info {
-    background-color: var(--light-gray);
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
     padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--light-gray);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-.contact-info:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+.contact-info h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #6c5ce7;
 }
 
 .contact-info p {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
     font-size: 1.1rem;
 }
 
 .contact-info i {
-    margin-right: 12px;
-    color: var(--secondary-color);
-    font-size: 1.3rem;
-    width: 30px;
+    margin-right: 0.75rem;
+    color: #6c5ce7;
+    font-size: 1.2rem;
+    width: 25px;
     text-align: center;
 }
 
 .contact-info .social-links {
-    margin-top: 1.5rem;
+    display: flex;
     justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
 }
 
 .contact-info .social-links a {
-    width: 45px;
-    height: 45px;
-    font-size: 1.6rem;
-}
-
-.contact-info h3,
-.contact-form h3 {
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-    font-size: 1.3rem;
-    text-align: center;
-    position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.contact-info h3::after,
-.contact-form h3::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    padding: 2rem;
-    background-color: var(--light-gray);
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.contact-form:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 1rem;
-    border: 2px solid transparent;
-    border-radius: 10px;
-    font-size: 1rem;
-    background-color: var(--white);
-    color: var(--text-color);
-    transition: var(--transition);
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: var(--secondary-color);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-}
-
-.contact-form textarea {
-    height: 150px;
-    resize: vertical;
-}
-
-.contact-form button {
-    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
-    color: var(--white);
-    padding: 1rem 1.5rem;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    font-size: 1.05rem;
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-size: 1.5rem;
+    color: #333;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    margin: 0.5rem auto 0;
-    width: 60%;
-    min-width: 150px;
 }
 
-.contact-form button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
-    z-index: -1;
-    transition: opacity 0.3s ease;
-    opacity: 0;
-}
-
-.contact-form button:hover {
+.contact-info .social-links a:hover {
+    color: #6c5ce7;
     transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
-.contact-form button:hover::before {
-    opacity: 1;
+html.dark-mode .contact-info {
+    background-color: var(--dark-card);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.contact-form button:active {
-    transform: translateY(1px);
+html.dark-mode .contact-info .social-links a {
+    color: var(--dark-text);
+}
+
+html.dark-mode .contact-info .social-links a:hover {
+    color: var(--accent-color);
 }
 
 /* Footer */
@@ -800,6 +767,11 @@ footer {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
     position: relative;
+}
+
+html.dark-mode footer {
+    background: linear-gradient(135deg, #0a0f1a 0%, #131d2c 100%);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.3);
 }
 
 footer::before {
@@ -1291,7 +1263,7 @@ nav a.active {
     to { transform: rotate(360deg); }
 }
 
-.dark-mode .loading-spinner {
+html.dark-mode .loading-spinner {
     border-color: rgba(255, 255, 255, 0.1);
     border-top-color: var(--accent-color);
 }

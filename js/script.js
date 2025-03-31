@@ -78,15 +78,15 @@ function setupDarkMode() {
     const savedTheme = localStorage.getItem('theme');
 
     if (savedTheme === 'dark' || (!savedTheme && prefersDarkMode)) {
-        document.body.classList.add('dark-mode');
+        document.documentElement.classList.add('dark-mode');
         themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
     }
 
     // Toggle dark mode
     themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
+        document.documentElement.classList.toggle('dark-mode');
 
-        if (document.body.classList.contains('dark-mode')) {
+        if (document.documentElement.classList.contains('dark-mode')) {
             localStorage.setItem('theme', 'dark');
             themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
             // Add transition effect
@@ -96,82 +96,6 @@ function setupDarkMode() {
             themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
             // Add transition effect
             addSparkle(themeToggle, 10);
-        }
-    });
-}
-
-// Form submission handling
-function setupContactForm() {
-    const contactForm = document.getElementById('contactForm');
-    if (!contactForm) return;
-
-    // Preencher informações do navegador para análise
-    if (document.getElementById('user_agent')) {
-        document.getElementById('user_agent').value = navigator.userAgent;
-    }
-
-    contactForm.addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        // Get form status element
-        const formStatus = document.getElementById('formStatus');
-        formStatus.className = 'form-status loading';
-        formStatus.innerHTML = '<div class="loading-spinner"></div> Enviando...';
-        formStatus.style.display = 'block';
-
-        // Get form data
-        const formData = new FormData(this);
-        const formValues = {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            subject: formData.get('subject'),
-            message: formData.get('message'),
-            created_at: new Date().toISOString(),
-            source: formData.get('source') || 'portfolio_website',
-            user_agent: formData.get('user_agent') || navigator.userAgent,
-            read: false
-        };
-
-        // Validação básica
-        if (!formValues.name || !formValues.email || !formValues.subject || !formValues.message) {
-            formStatus.className = 'form-status error';
-            formStatus.textContent = 'Por favor, preencha todos os campos obrigatórios.';
-            return;
-        }
-
-        try {
-            if (typeof supabaseClient === 'undefined') {
-                throw new Error('Supabase client não foi carregado');
-            }
-
-            // Enviar para o Supabase
-            const { data, error } = await supabaseClient
-                .from('contacts')
-                .insert([formValues]);
-
-            if (error) throw error;
-
-            // Add confetti celebration
-            addConfetti();
-
-            // Reset form
-            contactForm.reset();
-
-            // Escolha uma das opções:
-
-            // Opção 1: Mostrar mensagem de sucesso no mesmo formulário
-            formStatus.className = 'form-status success';
-            formStatus.textContent = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
-
-            // Opção 2: Redirecionar para página de agradecimento após pequeno delay
-            // setTimeout(() => {
-            //     window.location.href = 'obrigado.html';
-            // }, 1000);
-        } catch (error) {
-            console.error('Erro ao enviar mensagem:', error);
-
-            formStatus.className = 'form-status error';
-            formStatus.textContent = 'Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente mais tarde.';
         }
     });
 }
@@ -419,5 +343,4 @@ document.addEventListener('DOMContentLoaded', () => {
     setupEmojiReactions();
     setupSkillsHoverEffects();
     setupMobileMenu();
-    setupContactForm();
 });
