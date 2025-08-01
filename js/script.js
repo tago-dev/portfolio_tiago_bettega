@@ -603,7 +603,7 @@ window.addEventListener('error', (e) => {
 // ===== CONSOLE WELCOME MESSAGE =====
 console.log(`
 🚀 Portfólio de Tiago Bettega
-📧 tago.dev@pm.me
+📧 tiagobettega.dev@gmail.com
 🌐 Desenvolvedor Full Stack
 
 Obrigado por visitar meu portfólio!
